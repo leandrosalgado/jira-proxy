@@ -1,14 +1,15 @@
 /**
  * Module dependencies.
  */
-var express = require('express');
-var proxy = require('http-proxy-middleware')
+const express = require('express');
+const proxy = require('http-proxy-middleware')
+const helmet = require('helmet')
 
 /**
  * Configure proxy middleware
  */
 const jira_instance = process.env.JIRA_INSTANCE;
-var jsonPlaceholderProxy = proxy({
+const jsonPlaceholderProxy = proxy({
   target: jira_instance,
   changeOrigin: true, // for vhosted sites, changes host header to match to target's host
   logLevel: 'debug',
@@ -26,12 +27,14 @@ var jsonPlaceholderProxy = proxy({
   
 });
 
-var app = express();
+const app = express();
 
 /**
  * Add the proxy to express
  */
 app.use('/rest/api', jsonPlaceholderProxy);
+
+app.use(helmet());
 
 const port = process.env.PORT || 3000;
 app.listen(port);
