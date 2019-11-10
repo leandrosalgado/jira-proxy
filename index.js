@@ -28,13 +28,13 @@ const jsonPlaceholderProxy = proxy({
 });
 
 const app = express();
+app.use(helmet());
 
 /**
  * Add the proxy to express
  */
 app.use('/rest/api', jsonPlaceholderProxy);
 
-app.use(helmet());
 
 const port = process.env.PORT || 3000;
 app.listen(port);
