@@ -31,7 +31,7 @@ var app = express();
 /**
  * Add the proxy to express
  */
-app.use('/', jsonPlaceholderProxy);
+app.use('/rest/api', jsonPlaceholderProxy);
 
 const port = process.env.PORT || 3000;
 app.listen(port);
