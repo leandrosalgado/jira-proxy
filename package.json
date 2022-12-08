@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/leandrosalgado/jira-proxy#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "helmet": "^3.21.2",
     "http-proxy-middleware": "^0.20.0"
   },
